@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.1/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.1/ref/settings/
 """
-
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'ckeditor',
     'ckeditor_uploader',
+    'grappelli',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -45,6 +46,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'cvetogis',
+    'shop',
+    'shop_settings',
 ]
 
 MIDDLEWARE = [
@@ -123,6 +128,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 CORS_ORIGIN_ALLOW_ALL = True
 REST_FRAMEWORK = {
@@ -155,7 +161,6 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.locmem.LocMemCache',
@@ -168,3 +173,5 @@ cloudinary.config(
     api_key="432633785332378",
     api_secret="HS-iGAgZl1FWxAebV_LfedLMaD8"
 )
+
+GRAPPELLI_ADMIN_TITLE = 'CvetoGIS - администрирование'
