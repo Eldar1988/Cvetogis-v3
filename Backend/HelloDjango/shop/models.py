@@ -7,12 +7,8 @@ class City(models.Model):
     """Города"""
     title = models.CharField('Название города', max_length=255)
     slug = models.SlugField(unique=True)
-    address = models.TextField('Адрес магазина в городе', null=True, blank=True, help_text='Вместе с названием города')
     phone = models.CharField('Номер телефона', max_length=20, blank=True, null=True)
     whatsapp = models.CharField('Whatsapp', max_length=20, help_text='В формате: 7 707 *** ****', null=True, blank=True)
-    site_title_by_city = models.CharField('Заголовок для страницы города', max_length=110,
-                                          help_text='Например: "Цветы с досатвкой в Караганде"')
-    site_description_by_city = models.TextField('Описание - description (SEO)')
     order = models.PositiveSmallIntegerField('Порядковый номер', null=True, blank=True)
 
     def __str__(self):
@@ -45,11 +41,9 @@ class DeliveryBranch(models.Model):
 class Reason(models.Model):
     """Повод для букета"""
     title = models.CharField('Название повода', max_length=255)
-    description = models.TextField('Описание')
     icon = models.CharField('Иконка', default='mdi-', max_length=100, help_text='https://materialdesignicons.com/')
     order = models.PositiveSmallIntegerField('Порядковый номер', null=True, blank=True)
     slug = models.SlugField(unique=True)
-    public = models.BooleanField('Опубликовать', default=True)
 
     def __str__(self):
         return self.title
@@ -108,7 +102,7 @@ class Seller(models.Model):
 class PresentCategory(models.Model):
     """Категория для подарков"""
     title = models.CharField('Заголовок', max_length=255)
-    slug = models.SlugField('')
+    slug = models.SlugField(unique=True)
     order = models.PositiveSmallIntegerField('Порядковый номер', null=True, blank=True)
 
     def __str__(self):
@@ -117,6 +111,22 @@ class PresentCategory(models.Model):
     class Meta:
         verbose_name = 'Категория подарка'
         verbose_name_plural = 'Категории подарков'
+        ordering = ('order',)
+
+
+class People(models.Model):
+    """Люди (для кого цветы)"""
+    title = models.CharField('Заголовок', max_length=255)
+    icon = models.CharField('Иконка', default='mdi-', max_length=200, help_text='https://materialdesignicons.com/')
+    slug = models.SlugField(unique=True)
+    order = models.PositiveSmallIntegerField('Порядковый номер', null=True, blank=True)
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'Кому'
+        verbose_name_plural = 'Кому'
         ordering = ('order',)
 
 
@@ -130,6 +140,7 @@ class Product(models.Model):
                                        related_name='products', verbose_name='Рекомендация')
     sort = models.ManyToManyField(Sort, blank=True, related_name='products', verbose_name='Сорт')
     reasons = models.ManyToManyField(Reason, blank=True, related_name='products', verbose_name='Повод')
+    flowers_for = models.ManyToManyField(People, blank=True, related_name='products', verbose_name='Для кого')
     price = models.IntegerField('Цена товара')
     old_price = models.IntegerField('Старая цена товара(необязательно)', blank=True, null=True)
     miniature = CloudinaryField('Миниатюра', folder='cvetogis/products', blank=True, null=True)

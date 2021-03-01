@@ -1,11 +1,12 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 
-from .models import City, DeliveryBranch, Sort, Reason, Image, Product, PresentCategory, Recommendation
+from .models import City, DeliveryBranch, Sort, Reason, Image, Product, PresentCategory, Recommendation, People, Seller
 
 
 admin.site.register(PresentCategory)
 admin.site.register(Recommendation)
+admin.site.register(Seller)
 
 
 @admin.register(City)
@@ -33,6 +34,14 @@ class SortAdmin(admin.ModelAdmin):
     search_fields = ('title',)
 
 
+@admin.register(People)
+class PeopleAdmin(admin.ModelAdmin):
+    list_display = ('title', 'slug', 'order')
+    list_editable = ('slug', 'order')
+    list_display_links = ('title',)
+    search_fields = ('title',)
+
+
 @admin.register(Reason)
 class ReasonAdmin(admin.ModelAdmin):
     list_display = ('title', 'slug', 'order', 'icon')
@@ -45,6 +54,7 @@ class ReasonAdmin(admin.ModelAdmin):
 
 class ImagesInline(admin.TabularInline):
     model = Image
+    extra = 1
 
 
 @admin.register(Product)

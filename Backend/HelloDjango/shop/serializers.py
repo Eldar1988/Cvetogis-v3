@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import City, Reason, Sort, Product, DeliveryBranch, Image, PresentCategory
+from .models import City, Reason, Sort, Product, DeliveryBranch, Image, PresentCategory, People
 
 
 class DeliveryBranchSerializer(serializers.ModelSerializer):
@@ -25,7 +25,15 @@ class ReasonsListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Reason
-        exclude = ('description', 'order')
+        exclude = ('order',)
+
+
+class PeopleListSerializer(serializers.ModelSerializer):
+    """Для кого список"""
+
+    class Meta:
+        model = People
+        exclude = ('order',)
 
 
 class PresentCategoryListSerializer(serializers.ModelSerializer):

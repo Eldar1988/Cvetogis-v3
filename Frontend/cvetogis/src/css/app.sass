@@ -1,0 +1,38 @@
+@import "fonts"
+@import "q_defaults"
+@import "spacer"
+@import "shop"
+
+*
+  margin: 0
+  padding: 0
+  box-sizing: border-box
+
+body
+  font-family: 'Alegreya Sans', sans-serif
+  background: #F2F2F2
+  font-weight: 400
+  color: $dark
+
+.rounded-10
+  border-radius: 10px !important
+
+.rounded-5
+  border-radius: 5px !important
+
+.header-container
+  width: 95%
+  margin: auto
+
+ul
+  list-style: none
+
+.hide-on-desktop
+  display: none
+
+@media screen and (max-width: 992px)
+  .hide-on-desktop
+    display: block
+
+  .hide-on-mobile
+    display: none

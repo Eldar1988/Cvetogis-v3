@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'cvetogis',
     'shop',
     'shop_settings',
+    'orders'
 ]
 
 MIDDLEWARE = [
