@@ -1,5 +1,5 @@
 <template>
-  <div class="call-back" style="margin-top: -7px">
+  <div class="call-back">
     <span
       class="text-weight-regular text-secondary cursor-pointer dashed font-16"
       @click="dialog = true"
@@ -33,7 +33,7 @@
         />
         <q-btn
           color="accent"
-          class="my-25 rounded-5 font-14 letter-1 text-weight-bold q-pl-md"
+          class="my-25 rounded-5 font-14 letter-1 text-weight-medium q-pl-md"
           label="Отправить"
           icon-right="east"
           unelevated

@@ -54,15 +54,17 @@ class SortListSerializer(serializers.ModelSerializer):
 
 class ProductListSerializer(serializers.ModelSerializer):
     """Список товаров"""
-    image = serializers.SerializerMethodField('get_image_url')
+    miniature = serializers.SerializerMethodField('get_miniature_url')
 
-    def get_image_url(self, obj):
-        return obj.image.url
+    def get_miniature_url(self, obj):
+        return obj.miniature.url
 
     class Meta:
         model = Product
-        exclude = ('description', 'future', 'show_on_home_page', 'order',
-                   'seller', 'public', 'views', 'pub_date', 'update')
+        exclude = ('image', 'description', 'future', 'show_on_home_page', 'order', 'delivery', 'composition', 'note',
+                   'seller', 'public', 'views', 'pub_date', 'update', 'sort', 'reasons', 'flowers_for', 'cities',
+                   'flower', 'bouquet', 'present', 'in_the_box', 'set', 'present_category'
+                   )
 
 
 class ProductImagesSerializer(serializers.ModelSerializer):

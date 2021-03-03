@@ -33,7 +33,12 @@ export default {
 </script>
 
 <style lang="sass">
-@media screen and (max-width: 992px)
+.badge
+  display: flex
+  align-items: center
+  justify-content: center
+
+@media screen and (max-width: 1100px)
   .wish-icon
     position: fixed
     bottom: 110px
@@ -43,4 +48,5 @@ export default {
 
     img
       box-shadow: 3px 3px 7px 0 rgba(0,0,0,.2)
+
 </style>

@@ -33,7 +33,7 @@ name: "gisCartIcon",
 </script>
 
 <style lang="sass">
-@media screen and (max-width: 992px)
+@media screen and (max-width: 1100px)
   .cart-icon
     position: fixed
     bottom: 50px

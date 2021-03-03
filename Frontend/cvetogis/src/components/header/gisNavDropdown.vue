@@ -4,7 +4,7 @@
     dropdown-icon="keyboard_arrow_down"
     flat rounded dense
     class="font-14 text-weight-bold" menu-anchor="bottom right"
-    style="margin-top: -6px; margin-left: -5px"
+    style="margin-top: -9px; margin-left: -5px"
   >
     <q-list class="rounded-10">
       <q-item

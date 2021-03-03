@@ -42,6 +42,14 @@ const routes = [
       { path: '', component: () => import('pages/WishList') }
     ]
   },
+  {
+    path: '/product/:slug',
+    params: 'slug',
+    component: () => import('layouts/MainLayout.vue'),
+    children: [
+      { path: '', component: () => import('pages/ProductDetail') }
+    ]
+  },
 
   // Always leave this as last one,
   // but you can also remove it

@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import main from './modules/main'
+import home from './modules/home'
 
 // import example from './module-example'
 
@@ -24,7 +25,8 @@ export default function (/* { ssrContext } */) {
       getServerURL: (state) => state.serverURL
     },
     modules: {
-      main
+      main,
+      home
     },
 
     // enable strict mode (adds overhead!)

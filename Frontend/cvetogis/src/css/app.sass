@@ -2,6 +2,8 @@
 @import "q_defaults"
 @import "spacer"
 @import "shop"
+@import "slider"
+@import "scrollbar"
 
 *
   margin: 0
@@ -12,10 +14,15 @@ body
   font-family: 'Alegreya Sans', sans-serif
   background: #F2F2F2
   font-weight: 400
+  line-height: 1.1 !important
   color: $dark
+
+.rounded-20
+  border-radius: 20px !important
 
 .rounded-10
   border-radius: 10px !important
+  overflow: hidden
 
 .rounded-5
   border-radius: 5px !important
@@ -30,9 +37,24 @@ ul
 .hide-on-desktop
   display: none
 
-@media screen and (max-width: 992px)
+.container
+  width: 1160px
+  max-width: 100%
+  margin: auto
+
+.border-left
+  border-left: 1px solid $grey-3
+
+@media screen and (max-width: 1100px)
   .hide-on-desktop
     display: block
 
   .hide-on-mobile
     display: none
+
+  .container
+    max-width: 95%
+
+@media screen and (max-width: 992px)
+  .container
+    max-width: 100%

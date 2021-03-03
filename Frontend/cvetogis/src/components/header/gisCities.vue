@@ -34,8 +34,8 @@ export default {
     }
   },
   created() {
-    this.getCurrentCity()
     setLocalStorageDefaults(this.$route.query['city'])
+    this.getCurrentCity()
   },
   data() {
     return {
@@ -48,6 +48,8 @@ export default {
       this.$store.commit('setCurrentCity', city)
       this.$root.$emit('updateCity')
       this.currentCity = city.title
+      this.$router.push('/')
+      location.reload()
     },
     getCurrentCity() {
       let city = ''
@@ -63,7 +65,7 @@ export default {
 </script>
 
 <style lang="sass">
-@media screen and (max-width: 992px)
+@media screen and (max-width: 1100px)
   .city-choice
     margin-left: -15px
     .on-left

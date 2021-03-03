@@ -95,7 +95,7 @@ export default {
   ul
     display: flex
 
-@media screen and (max-width: 992px)
+@media screen and (max-width: 1100px)
   .header
     ul
       flex-direction: column !important

@@ -1,12 +1,10 @@
 from ckeditor_uploader.fields import RichTextUploadingField
 from cloudinary.models import CloudinaryField
 from django.db import models
-from shop.models import City
 
 
 class Slider(models.Model):
     """Основной слайдер"""
-    city = models.ForeignKey(City, on_delete=models.CASCADE, verbose_name='Город', null=True, blank=True)
     title = models.CharField('Заголовок', max_length=110, db_index=True)
     image = CloudinaryField('Изображение', folder='cvetogis/slider')
     text = models.TextField('Текст-призыв')
@@ -18,8 +16,8 @@ class Slider(models.Model):
         return self.title
 
     class Meta:
-        verbose_name = 'Основной слайд'
-        verbose_name_plural = 'Основные слайды'
+        verbose_name = 'Слайд'
+        verbose_name_plural = '1. Слайдер'
         ordering = ('order',)
 
 
@@ -34,7 +32,7 @@ class PrivacyPolicy(models.Model):
 
     class Meta:
         verbose_name = 'Политика конфиденциальности'
-        verbose_name_plural = 'Политика конфиденциальности'
+        verbose_name_plural = '6. Политика конфиденциальности'
 
 
 class PublicOffer(models.Model):
@@ -48,7 +46,7 @@ class PublicOffer(models.Model):
 
     class Meta:
         verbose_name = 'Публичная оферта'
-        verbose_name_plural = 'Публичная оферта'
+        verbose_name_plural = '5. Публичная оферта'
 
 
 class ShippingAndPayment(models.Model):
@@ -62,7 +60,7 @@ class ShippingAndPayment(models.Model):
 
     class Meta:
         verbose_name = 'Доставка'
-        verbose_name_plural = 'Доставка'
+        verbose_name_plural = '4. Доставка'
 
 
 class AboutInfo(models.Model):
@@ -77,7 +75,7 @@ class AboutInfo(models.Model):
 
     class Meta:
         verbose_name = 'О компании'
-        verbose_name_plural = 'О компании'
+        verbose_name_plural = '2. О компании'
 
 
 class Testimonial(models.Model):
@@ -93,5 +91,5 @@ class Testimonial(models.Model):
 
     class Meta:
         verbose_name = 'Отзыв'
-        verbose_name_plural = 'Отзывы'
+        verbose_name_plural = '3. Отзывы'
         ordering = ('-pub_date',)
